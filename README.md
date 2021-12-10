@@ -48,5 +48,37 @@ Kotlin extension for common functions that save your time
    ```kotlin
    fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
    
+## Extension for ACTIVITIES & FRAGMENTS   
    
+   1. To replace child fragment with Animation
+      ```kotlin
+      fun Fragment.replaceChildFragmentWithAnimation(
+             fragment: Fragment, @IdRes frameId: Int,
+             addBackStack: String? = null
+         ) {
+             val fragTransaction = childFragmentManager.beginTransaction()
+             fragTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+             fragTransaction.apply {
+                 if (addBackStack != null) {
+                     addToBackStack(addBackStack)
+                 }
+                 replace(frameId, fragment)
+                 commitAllowingStateLoss()
+             }
+         }
    
+   2. To replace child fragment
+      ```kotlin
+      fun Fragment.replaceChildFragment(
+             fragment: Fragment, @IdRes frameId: Int,
+             addBackStack: String? = null
+         ) {
+             val fragTransaction = childFragmentManager.beginTransaction()
+             fragTransaction.apply {
+                 if (addBackStack != null) {
+                     addToBackStack(addBackStack)
+                 }
+                 replace(frameId, fragment)
+                 commitAllowingStateLoss()
+             }
+         }
