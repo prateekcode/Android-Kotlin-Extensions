@@ -82,3 +82,7 @@ Kotlin extension for common functions that save your time
                  commitAllowingStateLoss()
              }
          }
+
+
+## Extension for LOGGER
+   ```
