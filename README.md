@@ -85,4 +85,20 @@ Kotlin extension for common functions that save your time
 
 
 ## Extension for LOGGER
-   ```
+   ```kotlin
+   fun showLog(message: String?, tag: String = "TAG-NAME") {
+    message?.let {
+        if (BuildConfig.DEBUG) {
+            printFullLog(it, tag)
+        }
+      }
+   }
+   
+   private fun printFullLog(message: String, tag: String) {
+    if (message.length > 3000) {
+        Log.e(tag, message.substring(0, 3000))
+        printFullLog(message.substring(3000), tag)
+    } else {
+        Log.e(tag, message)
+      }
+   }
