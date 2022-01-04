@@ -102,3 +102,16 @@ Kotlin extension for common functions that save your time
         Log.e(tag, message)
       }
    }
+
+## Format Time
+   ```kotlin
+   fun formatTimeStampToDateTime(timeStamp: Long): String {
+    return try {
+        val format = SimpleDateFormat("dd MMM yyyy, hh:mm a", Locale.ENGLISH)
+        val date = Date(timeStamp)
+        format.format(date)
+    } catch (ex: Exception) {
+        ex.showLog()
+        ""
+      }
+   }
