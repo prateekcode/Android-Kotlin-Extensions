@@ -48,6 +48,14 @@ Kotlin extension for common functions that save your time
    ```kotlin
    fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
    
+6. To copy some text to clipboard
+   ```kotlin
+   fun Context.copyToClipboard(content: String) {
+       val clipboardManager = ContextCompat.getSystemService(this, ClipboardManager::class.java)!!
+       val clip = ClipData.newPlainText("clipboard", content)
+       clipboardManager.setPrimaryClip(clip)
+   }
+   
 ## Extension for ACTIVITIES & FRAGMENTS   
    
    1. To replace child fragment with Animation
